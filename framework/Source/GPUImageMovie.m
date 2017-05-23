@@ -666,7 +666,7 @@ static CVReturn renderCallback(CVDisplayLinkRef displayLink,
                 [self convertYUVToRGBOutput];
 //            }
 
-            for (id<GPUImageInput> currentTarget in targets)
+            for (id<GPUImageInput> currentTarget in [targets copy])
             {
                 NSInteger indexOfObject = [targets indexOfObject:currentTarget];
                 NSInteger targetTextureIndex = [[targetTextureIndices objectAtIndex:indexOfObject] integerValue];
@@ -676,7 +676,7 @@ static CVReturn renderCallback(CVDisplayLinkRef displayLink,
             
             [outputFramebuffer unlock];
 
-            for (id<GPUImageInput> currentTarget in targets)
+            for (id<GPUImageInput> currentTarget in [targets copy])
             {
                 NSInteger indexOfObject = [targets indexOfObject:currentTarget];
                 NSInteger targetTextureIndex = [[targetTextureIndices objectAtIndex:indexOfObject] integerValue];
@@ -745,7 +745,7 @@ static CVReturn renderCallback(CVDisplayLinkRef displayLink,
                      self.outputTextureOptions.type,
                      CVPixelBufferGetBaseAddress(movieFrame));
         
-        for (id<GPUImageInput> currentTarget in targets)
+        for (id<GPUImageInput> currentTarget in [targets copy])
         {
             NSInteger indexOfObject = [targets indexOfObject:currentTarget];
             NSInteger targetTextureIndex = [[targetTextureIndices objectAtIndex:indexOfObject] integerValue];
@@ -755,7 +755,7 @@ static CVReturn renderCallback(CVDisplayLinkRef displayLink,
         
         [outputFramebuffer unlock];
         
-        for (id<GPUImageInput> currentTarget in targets)
+        for (id<GPUImageInput> currentTarget in [targets copy])
         {
             NSInteger indexOfObject = [targets indexOfObject:currentTarget];
             NSInteger targetTextureIndex = [[targetTextureIndices objectAtIndex:indexOfObject] integerValue];
